@@ -1,0 +1,28 @@
+#include <Arduino.h>
+const uint8_t btn_pin = 3;
+const uint8_t led_pin = 5;
+const uint8_t exled_pin = 5;
+#include <Arduino.h>
+const uint8_t btn_pin = 3;
+const uint8_t led_pin = 14;
+
+uint8_t led_state = LOW;
+
+void toggle() {
+
+	led_state = !(led_state);
+	digitalWrite(9, led_state);
+
+}
+
+void setup() {
+	pinMode(btn_pin, INPUT);
+	pinMode(led_pin, OUTPUT);
+
+	attachInterrupt(digitalPinToInterrupt(btn_pin), toggle, FALLING);
+
+}
+
+void loop() {
+	delay(500);
+}
